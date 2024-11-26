@@ -13,8 +13,49 @@
 
 </head>
 
-<body>
-  
+<body class="d-flex justify-content-center">
+
+  <main>
+    <div class="container w-75 border mt-5">
+      <div class="row">
+        <p id="timer" class="text-center">COUNTER</p>
+      </div>
+      <div class="row">
+        <p id="howtoplay" class="text-center">MEMORIZZA I NUMERI</p>
+      </div>
+      <div class="row">
+        <p id="numbers" class="text-center">STRINGA DEI NUMERI</p>
+      </div>
+      <form id="numberform" action="#" class="row">
+        <div class="col">
+          <input type="number" min="1" max="50" class="form-control ins-number" required >
+        </div>
+        <div class="col">
+          <input type="number" min="1" max="50" class="form-control ins-number"required>
+        </div>
+        <div class="col">
+          <input type="number" min="1" max="50" class="form-control ins-number" required>
+        </div>
+        <div class="col">
+          <input type="number" min="1" max="50" class="form-control ins-number" required >
+        </div>
+        <div class="col">
+          <input type="number" min="1" max="50" class="form-control ins-number" required >
+        </div>
+
+        <div class="col-12 d-flex justify-content-center">
+          <button type="submit" class="btn btn-primary mt-4">CONFERMA</button>
+        </div>
+
+ 
+      </form>
+      <div class="row">
+        <p id="finalmessage" class="text-center mt-3">MESSAGGIO FINALE</p>
+      </div>
+    </div>
+
+
+  </main>
 
   <script src="js/script.js"></script>
 </body>
