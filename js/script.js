@@ -2,8 +2,8 @@
 
 let numeriGenerati = [];
 let counterTempo = 10;
-let counterNumeri = 0
-
+let numeriUtente = []
+let counterNumeri = 0;
 
 // elementi HTML:
 
@@ -12,7 +12,7 @@ const howtoplay = document.getElementById ("howtoplay");
 const numberString = document.getElementById("numbers");
 const finalMessage = document.getElementById("finalmessage");
 const form = document.getElementById("numberform");
-const numberInput= document.querySelector(".ins-number");
+const numberInputs= document.querySelectorAll(".ins-number");
 
 
 
@@ -55,13 +55,36 @@ const scorriTempo = setInterval(function(){
 
 form.addEventListener('submit', function(event){
   event.preventDefault();
-  numeroInserito = parseInt(numberInput.value);
-  //logica di confronto dei numeri
-  if(numeriGenerati.includes(numeroInserito)){
-    counterNumeri++
+
+  // numberInputs con il queryselector genera una nodelist con gli input chiamare direttamente il .value non funziona. L'unico modo è ciclare i risultati della nodelist in per poi trasformarli in numeri e pusharli dentro un array vuoto. In questo caso quell'array è numeriUtente.
+
+  for (let i = 0; i < numberInputs.length; i++) {
+    let numeroInserito = numberInputs[i].value.trim() ? parseInt(numberInputs[i].value.trim()) : 0;
+    numeriUtente.push(numeroInserito);
   }
+  console.log(numeriUtente)
   
-finalMessage.classList.add("show"); //al submit appare anche il messaggio finale
+
+  //logica di confronto dei numeri
+ 
+  if (numeriUtente.length === 5){
+    for (let i = 0; i < numeriUtente.length; i++){
+      if(numeriGenerati.includes(numeriUtente[i])){
+        counterNumeri++;
+      }
+    }
+  }
+
+  console.log(counterNumeri)
+
+
+  finalMessage.classList.remove("hide"); //al submit appare anche il messaggio finale
+
+  form.classList.remove("show-f")
+
+
+
+ 
 
 // logica del messaggio finale
 if (counterNumeri === 0){
